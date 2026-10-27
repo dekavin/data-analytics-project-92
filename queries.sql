@@ -1,4 +1,9 @@
 
+-- выводит общее количество покупателей
+SELECT COUNT(*) FROM customers;
+
+
+
 -- 1. выводит топ 10 продавцов по общей выручке
 SELECT
     CONCAT(TRIM(e.first_name), ' ', TRIM(e.last_name)) AS seller,
