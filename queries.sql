@@ -4,7 +4,7 @@ SELECT COUNT(*) FROM customers;
 
 
 
--- 1. выводит топ 10 продавцов по общей выручке
+-- 6.1. выводит топ 10 продавцов по общей выручке
 SELECT
     CONCAT(TRIM(e.first_name), ' ', TRIM(e.last_name)) AS seller,
     COUNT(s.sales_id) AS operations,
@@ -19,7 +19,7 @@ ORDER BY income DESC
 LIMIT 10;
 
 
--- 2. выводит продавцов, у которых средняя выручка за сделку ниже общей
+-- 6.2. выводит продавцов, у которых средняя выручка за сделку ниже общей
 SELECT
     TRIM(e.first_name) || ' ' || TRIM(e.last_name) AS seller,
     FLOOR(AVG(s.quantity * p.price))               AS average_income
@@ -35,7 +35,7 @@ HAVING AVG(s.quantity * p.price) < (
 ORDER BY average_income ASC;
 
 
--- 3. выводит выручку каждого продавца по дням недели
+-- 6.3. выводит выручку каждого продавца по дням недели
 SELECT
     TRIM(e.first_name) || ' ' || TRIM(e.last_name) AS seller,
     LOWER(TRIM(TO_CHAR(s.sale_date, 'day')))       AS day_of_week,
